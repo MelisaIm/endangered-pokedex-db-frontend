@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Species from './pages/Species';
 
 function App() {
   return (
@@ -64,7 +65,7 @@ function App() {
             <Nonprofits />
           </Route>
           <Route path="/species">
-            <Species />
+            <Species data={[{animalId: 1, scientificName: "Pikachu", genus: "pikachuFam", family: "alsoPichu", order: "", class: "", phylum: "", cause:"", photoUrl: "", lastUpdate: ""}]} title="Endangered Species" description="This table is about endangered species"/>
           </Route>
           <Route path="/endangered-nonprofits">
             <EndangeredNonprofits />
@@ -82,10 +83,6 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function Species() {
-  return <h2>Species</h2>;
-}
-
 function Nonprofits() {
   return <h2>Nonprofits</h2>;
 }
@@ -101,13 +98,17 @@ function EndangeredNonprofits() {
 function EndangeredHabitats() {
   return <h2>Endangered Habitats</h2>;
 }
+
 function NumberLeft() {
   return <h2>Number Left</h2>;
 }
+
 function CaptivityPlaces() {
   return <h2>Captivity Places</h2>;
 }
+
 function Habitats() {
   return <h2>Habitats</h2>;
 }
+
 export default App;
