@@ -1,6 +1,7 @@
 # Getting Started with Endangered Pokedex React App
 
 ![Small GIF (400x218)](https://user-images.githubusercontent.com/15054255/116585644-746d1500-a8cd-11eb-905f-7ef50eb0f6ab.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
