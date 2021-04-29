@@ -17,10 +17,10 @@ export default class Table extends React.Component {
     }
 
     renderTableHeader() {
-        let header = Object.keys(this.state.data[0]);
-        return <tr>{header.map((key, index) => {
-            return <th key={index}>{key}</th>
-         })}</tr>
+        if (this.state.data && this.state.data.length) {
+            let header = Object.keys(this.state.data[0]);
+            return <tr>{header.map((key, index) => <th key={index}>{key}</th>)}</tr>
+        } 
     }
 
     render() {

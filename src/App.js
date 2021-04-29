@@ -10,6 +10,10 @@ import Species from './pages/Species';
 import Nonprofits from './pages/Nonprofits';
 import Habitats from './pages/Habitats';
 import CaptivityPlaces from './pages/CaptivityPlaces';
+import NumberLeft from './pages/NumberLeft';
+import EndangeredCaptivityPlaces from './pages/EndangeredCaptivityPlaces';
+import EndangeredHabitats from './pages/EndangeredHabitats';
+import EndangeredNonprofits from './pages/EndangeredNonprofits';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -42,6 +46,22 @@ export default class App extends React.Component {
         {numberLeftId: 3, animalId: 3, inCaptivity: 0, inWild: 1378, decade: 2010, conservationStatus: "endangered"},
         {numberLeftId: 4, animalId: 4, inCaptivity: 0, inWild: 5350, decade: 2010, conservationStatus: "endangered"},
         {numberLeftId: 5, animalId: 1, inCaptivity: 0, inWild: 2500, decade: 2000, conservationStatus: "endangered"}
+      ],
+      endangeredCaptivityPlaces: [{animalId: 4, zooId: 1}],
+      endangeredHabitats: [
+        {animalId: 1, habitatId: 2},
+        {animalId: 2, habitatId: 3},
+        {animalId: 3, habitatId: 1},
+        {animalId: 4, habitatId: 1}
+      ],
+      endangeredNonprofits: [
+        {animalId: 3, nonprofitId: 1},
+        {animalId: 2, nonprofitId: 3},
+        {animalId: 4, nonprofitId: 4},
+        {animalId: 1, nonprofitId: 2},
+        {animalId: 2, nonprofitId: 2},
+        {animalId: 3, nonprofitId: 2},
+        {animalId: 4, nonprofitId: 2}
       ]
     }
   }
@@ -85,13 +105,13 @@ export default class App extends React.Component {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/endangered-captivity-places">
-            <EndangeredCaptivityPlaces />
+            <EndangeredCaptivityPlaces data={this.state.endangeredCaptivityPlaces} title="Endangered Species + Captivity Places" description="Inner join table for endangered species and their captivity places"/>
           </Route>
           <Route path="/endangered-habitats">
-            <EndangeredHabitats />
+            <EndangeredHabitats data={this.state.endangeredHabitats} title="Endangered Species + Native Habitats" description="Inner join table for endangered species and where they naturally reside"/>
           </Route>
           <Route path="/number-left">
-            <NumberLeft />
+            <NumberLeft data={this.state.numberLeft} title="Number Left by Decade" description="This table shows how many per species remain per decade"/>
           </Route>
           <Route path="/captivity-places">
               <CaptivityPlaces data={this.state.captivityPlaces} title="Captivity Places" description="This table is about places where these species live in captivity" />
@@ -106,7 +126,7 @@ export default class App extends React.Component {
             <Species data={this.state.animals} title="Endangered Species" description="This table is about endangered species"/>
           </Route>
           <Route path="/endangered-nonprofits">
-            <EndangeredNonprofits />
+            <EndangeredNonprofits data={this.state.endangeredNonprofits} title="Endangered Species + Nonprofits" description="Inner join table for endangered species and the nonprofits working to protect and preserve them"/>
           </Route>
           <Route path="/">
             <Home />
@@ -122,20 +142,5 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function EndangeredCaptivityPlaces() {
-  return <h2>Endangered Captivity Places</h2>;
-}
-
-function EndangeredNonprofits() {
-  return <h2>Endangered Nonprofits</h2>;
-}
-
-function EndangeredHabitats() {
-  return <h2>Endangered Habitats</h2>;
-}
-
-function NumberLeft() {
-  return <h2>Number Left</h2>;
-}
 
 

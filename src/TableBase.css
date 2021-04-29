@@ -2,3 +2,7 @@
 .tableClass {
     padding: 20px;
 }
+
+.tableClass td:nth-child(9) {
+    font-size: 10px;
+}
