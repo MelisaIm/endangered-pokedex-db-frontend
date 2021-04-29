@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -7,7 +8,20 @@ import {
 } from "react-router-dom";
 import Species from './pages/Species';
 
-function App() {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      animalList: [
+        {animalId: 1, scientificName: "Bubalus quarlesi", genus: "Bubalus", family: "Bovidae", order: "Artiodactyla", class: "Mammalia", phylum: "Chordata", cause: "hunting", photoUrl: "https://blog.nationalgeographic.org/wp-content/uploads/2018/02/Anoa-cropped-720x502.jpg", lastUpdate: "2021-04-26"},
+        {animalId: 2, scientificName: "Platanista gangetica", genus: "Platanista", family: "Platanistidae", order: "Artiodactyla", class: "Mammalia", phylum: "Chordata", cause: "habitat disruption", photoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Platanista_gangetica_noaa.jpg/1920px-Platanista_gangetica_noaa.jpg", lastUpdate: "2021-04-26"},
+        {animalId: 3, scientificName: "Leopardus jacobita", genus: "Leopardus", family: "Felidae", order: "Carnivora", class: "Mammalia", phylum: "Chordata", cause: "habitat loss", photoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Andean_cat_1_Jim_Sanderson.jpg/1024px-Andean_cat_1_Jim_Sanderson.jpg", lastUpdate: "2021-04-26"},
+        {animalId: 4, scientificName: "Chinchilla lanigera", genus: "Chinchilla", family: "Chinchillidae", order: "Rodentia", class: "Mammalia", phylum: "Chordata", cause: "hunting", photoUrl: "https://www.globalwildlife.org/wp-content/uploads/2020/06/M121_001_001-03.jpeg", lastUpdate: "2021-04-26"}
+    ]
+    }
+  }
+  render(){
   return (
     <Router>
       <div>
@@ -65,7 +79,7 @@ function App() {
             <Nonprofits />
           </Route>
           <Route path="/species">
-            <Species data={[{animalId: 1, scientificName: "Pikachu", genus: "pikachuFam", family: "alsoPichu", order: "", class: "", phylum: "", cause:"", photoUrl: "", lastUpdate: ""}]} title="Endangered Species" description="This table is about endangered species"/>
+            <Species data={this.state.animalList} title="Endangered Species" description="This table is about endangered species"/>
           </Route>
           <Route path="/endangered-nonprofits">
             <EndangeredNonprofits />
@@ -77,6 +91,7 @@ function App() {
       </div>
     </Router>
   );
+}
 }
 
 function Home() {
@@ -111,4 +126,3 @@ function Habitats() {
   return <h2>Habitats</h2>;
 }
 
-export default App;

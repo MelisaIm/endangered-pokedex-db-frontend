@@ -13,7 +13,7 @@ table, th, td {
 }
 
 td, th {
-  padding: 5px;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
