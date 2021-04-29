@@ -2,15 +2,6 @@ import React from 'react';
 import Table from '../TableBase';
 
 export default class Species extends Table {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            data: props.data, 
-            title: props.title, 
-            description: props.description
-        }
-    }
 
     renderTable() {
         return this.state.data.map(species => 
