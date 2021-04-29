@@ -23,6 +23,11 @@ export default class Table extends React.Component {
         } 
     }
 
+    onClickAdd() {
+        //TODO
+        alert("I don't do anything yet!");
+    }
+
     render() {
         return (<div className="tableClass">
         <div className="nes-container with-title is-rounded">
@@ -37,6 +42,7 @@ export default class Table extends React.Component {
             {this.renderTable(this.state.data)}
             </tbody>
         </table>
+        <button className="nes-btn" onClick={this.onClickAdd}>Add row</button>
         </div>)
     }
 }

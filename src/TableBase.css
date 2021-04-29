@@ -2,6 +2,8 @@
 .tableClass {
     padding: 20px;
     width: 101vw;
+    display:flex;
+    flex-flow: column;
 }
 
 .tableClass table {
