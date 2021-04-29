@@ -12,7 +12,7 @@ export default class Table extends React.Component {
         }
     }
 
-    renderTable() {
+    renderTable(data) {
         // override in children
     }
 

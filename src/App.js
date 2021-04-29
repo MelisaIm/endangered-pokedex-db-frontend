@@ -9,6 +9,7 @@ import {
 import Species from './pages/Species';
 import Nonprofits from './pages/Nonprofits';
 import Habitats from './pages/Habitats';
+import CaptivityPlaces from './pages/CaptivityPlaces';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -93,7 +94,7 @@ export default class App extends React.Component {
             <NumberLeft />
           </Route>
           <Route path="/captivity-places">
-              <CaptivityPlaces />
+              <CaptivityPlaces data={this.state.captivityPlaces} title="Captivity Places" description="This table is about places where these species live in captivity" />
             </Route>
           <Route path="/habitats">
               <Habitats data={this.state.nativeHabitats} title="Habitats" description="This table is about habitats where these species naturally reside"/>
@@ -135,10 +136,6 @@ function EndangeredHabitats() {
 
 function NumberLeft() {
   return <h2>Number Left</h2>;
-}
-
-function CaptivityPlaces() {
-  return <h2>Captivity Places</h2>;
 }
 
 
