@@ -69,16 +69,14 @@ export default class App extends React.Component {
   return (
     <Router>
       <div>
+        <h1 style={{display: "flex", justifyContent: "center"}}>Endangered Pokedex - Bill's PC</h1>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
+          <ul id="menu">
             <li>
               <Link to="/species">Species Table</Link>
             </li>
             <li>
-              <Link to="/endangered-nonprofits">Endangered Species + Nonprofits Table</Link>
+              <Link to="/endangered-nonprofits">Endangered Species + Nonprofits</Link>
             </li>
             <li>
               <Link to="/nonprofits">Nonprofits Table</Link>
@@ -87,10 +85,10 @@ export default class App extends React.Component {
               <Link to="/habitats">Habitats Table</Link>
             </li>            
             <li>
-              <Link to="/endangered-habitats">Endangered Species + Habitats Table</Link>
+              <Link to="/endangered-habitats">Endangered Species + Habitats </Link>
             </li>
             <li>
-              <Link to="/endangered-captivity-places">Endangered Species + Captivity Places Table</Link>
+              <Link to="/endangered-captivity-places">Endangered Species + Captivity Places </Link>
             </li>
             <li>
               <Link to="/captivity-places">Captivity Places Table</Link>
@@ -122,14 +120,11 @@ export default class App extends React.Component {
           <Route path="/nonprofits">
             <Nonprofits data={this.state.nonprofits} title="Nonprofits" description="This table is about nonprofits that work to preserve and revitalize fauna"/>
           </Route>
-          <Route path="/species">
-            <Species data={this.state.animals} title="Endangered Species" description="This table is about endangered species"/>
-          </Route>
           <Route path="/endangered-nonprofits">
             <EndangeredNonprofits data={this.state.endangeredNonprofits} title="Endangered Species + Nonprofits" description="Inner join table for endangered species and the nonprofits working to protect and preserve them"/>
           </Route>
-          <Route path="/">
-            <Home />
+          <Route path={["/","/species"]}>
+            <Species data={this.state.animals} title="Endangered Species" description="This table is about endangered species"/>
           </Route>
         </Switch>
       </div>
@@ -138,9 +133,6 @@ export default class App extends React.Component {
 }
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
 
 
 

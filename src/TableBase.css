@@ -1,8 +1,17 @@
 
 .tableClass {
     padding: 20px;
+    width: 101vw;
+}
+
+.tableClass table {
+    width: 98vw;
 }
 
 .tableClass td:nth-child(9) {
     font-size: 10px;
+}
+
+.tableClass > .nes-container {
+    margin-bottom: 20px;
 }

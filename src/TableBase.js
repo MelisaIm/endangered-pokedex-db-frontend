@@ -25,9 +25,11 @@ export default class Table extends React.Component {
 
     render() {
         return (<div className="tableClass">
-        <h1>{this.state.title}</h1>
-        <h3>{this.state.description}</h3>
-        <table>
+        <div className="nes-container with-title is-rounded">
+            <p className="title">{this.state.title}</p>
+            <p>{this.state.description}</p>
+        </div>
+        <table className="nes-table is-bordered is-centered is-rounded is-dark">
             <thead>
             {this.renderTableHeader()}
             </thead>
