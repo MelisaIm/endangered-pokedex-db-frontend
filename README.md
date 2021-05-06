@@ -1,4 +1,4 @@
-# Getting Started with Endangered Pokedex React App
+# Getting Started with Endangered Pokedex React App by Melisa Im and Veronica Jo
 
 https://user-images.githubusercontent.com/15054255/116586001-d168cb00-a8cd-11eb-9bcd-5e5dd9a7b388.mp4
 
