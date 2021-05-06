@@ -21,12 +21,17 @@
 .tableClass .createForm {
    display: flex;
    flex-wrap: wrap; 
-   align-items: center;
+   align-items: baseline;
 }
 
 .tableClass .createForm .formItem {
     display: flex;
     margin: 5px;
+    align-items: baseline;
+}
+
+.tableClass .createForm .formItem > label {
+    margin-right: 5px;
 }
 
 .tableClass .createForm input[value="Add Row"] {
