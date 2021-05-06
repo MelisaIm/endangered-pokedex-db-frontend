@@ -23,7 +23,8 @@ export default class Table extends React.Component {
         } 
     }
 
-    onClickAdd() {
+    onClickAdd(e) {
+        e.preventDefault();
         //TODO
         alert("I don't do anything yet!");
     }
@@ -34,6 +35,16 @@ export default class Table extends React.Component {
             <p className="title">{this.state.title}</p>
             <p>{this.state.description}</p>
         </div>
+        <form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
+            {this.state.data && this.state.data.length && Object.keys(this.state.data[0]).map((key, index) => {
+                return (<div className="formItem">
+                        <label key={index} for={key}>{key}</label><br/>
+                        <input type="text" id={key} name={key}/><br/><br/>
+                </div>
+                )
+            })}
+            <input type="submit" value="Add Row"/>
+        </form> 
         <table className="nes-table is-bordered is-centered is-rounded is-dark">
             <thead>
             {this.renderTableHeader()}
@@ -42,7 +53,6 @@ export default class Table extends React.Component {
             {this.renderTable(this.state.data)}
             </tbody>
         </table>
-        <button className="nes-btn" onClick={this.onClickAdd}>Add row</button>
         </div>)
     }
 }
