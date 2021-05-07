@@ -112,7 +112,6 @@ export default class App extends React.Component {
         return obj;
       }
     }).filter((el) => el !== undefined);
-    console.log(newArr);
     this.setState({[table]: newArr});
   }
 

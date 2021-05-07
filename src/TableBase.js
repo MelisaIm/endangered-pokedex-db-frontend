@@ -25,8 +25,9 @@ export default class Table extends React.Component {
     }
 
     onClickDelete = (data, table) => {
-        console.log("hi", data);
-        this.props.onDelete(table, data);
+        if (table == 'animals') { //only delete animals for now
+            this.props.onDelete(table, data);
+        }
     }
 
     onClickUpdate(data, table) {
