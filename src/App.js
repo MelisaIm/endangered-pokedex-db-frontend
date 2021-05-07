@@ -62,6 +62,8 @@ export default class App extends React.Component {
         {animalId: 4, nonprofitId: 2}
       ]
     }
+
+    this.delete = this.delete.bind(this);
   }
 
   update(table, property, newValue) {
@@ -73,14 +75,45 @@ export default class App extends React.Component {
   }
 
   delete(table, data) {
-    console.log(table, data);
+    const dataArr = this.state[table];
+    let idOne = 'animalId', idTwo;
     switch (table) {
       case 'endangeredNonprofits':
-      case 'endangeredHabitats':
-      case '':
+        idOne = 'animalId';
+        idTwo = 'nonprofitId';
         break;
-      default: 
+      case 'endangeredHabitats':
+        idOne = 'animalId';
+        idTwo = 'habitatId';
+        break;
+      case 'nonprofits':
+        idOne = 'nonprofitId';
+        break;
+      case 'habitats':
+        idOne = 'habitatId';
+        break;
+      case 'captivityPlaces':
+        idOne = 'zooId';
+        break;
+      case 'numberLeft':
+        idOne = 'numberLeftId';
+        break;
     }
+    if (idTwo) {
+      const newArr = dataArr.map((obj) => {
+        if (obj[idOne] !== data[idOne] || obj[idTwo] !== data[idTwo]) {
+          return obj; 
+        }
+      })
+    }
+
+    const newArr = dataArr.map((obj) => {
+      if (obj[idOne] !== data[idOne]) {
+        return obj;
+      }
+    }).filter((el) => el !== undefined);
+    console.log(newArr);
+    this.setState({[table]: newArr});
   }
 
   render(){
@@ -94,10 +127,10 @@ export default class App extends React.Component {
                 <Link to="/species">Species Table</Link>
               </li>
               <li>
-                <Link to="/endangered-nonprofits">Endangered Species + Nonprofits</Link>
+                <Link to="/nonprofits">Nonprofits Table</Link>
               </li>
               <li>
-                <Link to="/nonprofits">Nonprofits Table</Link>
+                <Link to="/endangered-nonprofits">Endangered Species + Nonprofits</Link>
               </li>
               <li>
                 <Link to="/habitats">Habitats Table</Link>

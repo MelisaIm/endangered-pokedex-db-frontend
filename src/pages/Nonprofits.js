@@ -4,7 +4,7 @@ import Table from '../TableBase';
 export default class Nonprofits extends Table {
 
     renderTable() {
-        return this.state.data.map(nonprofit => 
+        return this.props.data.map(nonprofit => 
             // data row
             <tr key={nonprofit.nonprofitId}>
                 <td>{nonprofit.nonprofitId}</td>

@@ -4,7 +4,7 @@ import Table from '../TableBase';
 export default class EndangeredNonprofits extends Table {
 
     renderTable() {
-        return this.state.data.map((dataPoint, index) => 
+        return this.props.data.map((dataPoint, index) => 
             // data row
             <tr key={index}>
                 <td>{dataPoint.animalId}</td>

@@ -4,7 +4,7 @@ import Table from '../TableBase';
 export default class Species extends Table {
 
     renderTable() {
-        return this.state.data.map(species => 
+        return this.props.data.map(species => 
             // data row
             <tr key={species.animalId}>
                 <td>{species.animalId}</td>

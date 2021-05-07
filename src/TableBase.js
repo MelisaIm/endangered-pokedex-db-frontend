@@ -4,12 +4,6 @@ import './TableBase.css'
 export default class Table extends React.Component {
     constructor(props) {
         super(props);
-    
-        this.state = {
-            data: props.data, 
-            title: props.title, 
-            description: props.description
-        }
     }
 
     renderTable(data) {
@@ -17,8 +11,8 @@ export default class Table extends React.Component {
     }
 
     renderTableHeader() {
-        if (this.state.data && this.state.data.length) {
-            let header = Object.keys(this.state.data[0]);
+        if (this.props.data && this.props.data.length) {
+            let header = Object.keys(this.props.data[0]);
             header.push("");
             return <tr>{header.map((key, index) => <th key={index}>{key}</th>)}</tr>
         } 
@@ -30,7 +24,7 @@ export default class Table extends React.Component {
         alert("I don't do anything yet!");
     }
 
-    onClickDelete(data, table) {
+    onClickDelete = (data, table) => {
         console.log("hi", data);
         this.props.onDelete(table, data);
     }
@@ -69,11 +63,11 @@ export default class Table extends React.Component {
     render() {
         return (<div className="tableClass">
         <div className="nes-container with-title is-rounded">
-            <p className="title">{this.state.title}</p>
-            <p>{this.state.description}</p>
+            <p className="title">{this.props.title}</p>
+            <p>{this.props.description}</p>
         </div>
         <form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
-            {this.state.data && this.state.data.length && Object.keys(this.state.data[0]).map((key, index) => {
+            {this.props.data && this.props.data.length && Object.keys(this.props.data[0]).map((key, index) => {
                 return (<div key={`div-${index}-${key}`} className="formItem">
                         <label key={`label-${index}-${key}`}>{key}</label><br/>
                         <input key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
@@ -89,7 +83,7 @@ export default class Table extends React.Component {
             {this.renderTableHeader()}
             </thead>
             <tbody>
-            {this.renderTable(this.state.data)}
+            {this.renderTable(this.props.data)}
             </tbody>
         </table>
         </div>)

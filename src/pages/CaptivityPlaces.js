@@ -4,7 +4,7 @@ import Table from '../TableBase';
 export default class CaptivityPlaces extends Table {
 
     renderTable() {
-        return this.state.data.map(place => 
+        return this.props.data.map(place => 
             // data row
             <tr key={place.zooId}>
                 <td>{place.zooId}</td>
