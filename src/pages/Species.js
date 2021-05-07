@@ -17,6 +17,7 @@ export default class Species extends Table {
                 <td>{species.cause}</td>
                 <td>{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
+                <td><button>Edit</button><button>Delete</button></td>
             </tr>
         );
     }

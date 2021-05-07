@@ -12,6 +12,7 @@ export default class Habitats extends Table {
                 <td>{habitat.country}</td>
                 <td>{habitat.biome}</td>
                 <td>{habitat.nativeHabitatCoordinates}</td>
+                <td><button>Edit</button><button>Delete</button></td>
             </tr>
         );
     }

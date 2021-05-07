@@ -12,6 +12,7 @@ export default class CaptivityPlaces extends Table {
                 <td>{place.zooState}</td>
                 <td>{place.zooCountry}</td>
                 <td>{place.zooCoordinates}</td>
+                <td><button>Edit</button><button>Delete</button></td>
             </tr>
         );
     }
