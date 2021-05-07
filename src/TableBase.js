@@ -29,6 +29,34 @@ export default class Table extends React.Component {
         alert("I don't do anything yet!");
     }
 
+    search(e) {        
+        let input, filter, table, tr;
+        input = e.target.value;
+        filter = input.toUpperCase();
+        table = document.getElementsByClassName("myTable")[0];
+        tr = table.getElementsByTagName("tr");
+        if (input.length) {
+            // Loop through all table rows, and hide those who don't match the search query
+            for (let i = 1; i < tr.length; i++) {
+                let tdArray = Array.from(tr[i].getElementsByTagName("td"));
+                let found = tdArray.find((el) =>  {
+                    let reg = new RegExp(`${filter}`);
+                    console.log(reg, el, filter, reg.test(filter))
+                    return reg.test(el.innerText.toUpperCase());
+                }); // regex test partial string
+                if (found) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        } else {
+            for (let i = 0; i < tr.length; i++) {
+                tr[i].style.display = "";
+            }
+        }   
+    }
+
     render() {
         return (<div className="tableClass">
         <div className="nes-container with-title is-rounded">
@@ -45,7 +73,9 @@ export default class Table extends React.Component {
             })}
             <input type="submit" value="Add Row"/>
         </form> 
-        <table className="nes-table is-bordered is-centered is-rounded is-dark">
+        <label>Search</label>
+        <input type="text" id="myInput" onKeyUp={this.search} placeholder="Search for ..."/><br/>
+        <table className="nes-table is-bordered is-centered is-rounded is-dark myTable">
             <thead>
             {this.renderTableHeader()}
             </thead>
