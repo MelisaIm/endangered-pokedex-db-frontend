@@ -18,7 +18,8 @@ export default class Species extends Table {
                 <td>{species.cause}</td>
                 <td>{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
-                <td><button>Edit</button><button>Delete</button></td>
+                <td>{species.captivityPlaceId}</td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
             </tr>
         );
     }

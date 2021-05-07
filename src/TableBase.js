@@ -30,6 +30,14 @@ export default class Table extends React.Component {
         alert("I don't do anything yet!");
     }
 
+    onClickDelete(e) {
+
+    }
+
+    onClickUpdate(e) {
+        
+    }
+
     search(e) {        
         let input, filter, table, tr;
         input = e.target.value;

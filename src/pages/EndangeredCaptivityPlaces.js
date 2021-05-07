@@ -9,7 +9,7 @@ export default class EndangeredCaptivityPlaces extends Table {
             <tr key={index}>
                 <td>{dataPoint.animalId}</td>
                 <td>{dataPoint.zooId}</td>
-                <td><button>Edit</button><button>Delete</button></td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
             </tr>
         );
     }

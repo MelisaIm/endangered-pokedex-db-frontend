@@ -12,7 +12,7 @@ export default class Habitats extends Table {
                 <td>{habitat.country}</td>
                 <td>{habitat.biome}</td>
                 <td>{habitat.nativeHabitatCoordinates}</td>
-                <td><button>Edit</button><button>Delete</button></td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
             </tr>
         );
     }
