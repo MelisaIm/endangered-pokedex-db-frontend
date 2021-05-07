@@ -30,12 +30,13 @@ export default class Table extends React.Component {
         alert("I don't do anything yet!");
     }
 
-    onClickDelete(e) {
-
+    onClickDelete(data, table) {
+        console.log("hi", data);
+        this.props.onDelete(table, data);
     }
 
-    onClickUpdate(e) {
-        
+    onClickUpdate(data, table) {
+        console.log("test", data);
     }
 
     search(e) {        

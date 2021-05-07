@@ -11,7 +11,6 @@ import Nonprofits from './pages/Nonprofits';
 import Habitats from './pages/Habitats';
 import CaptivityPlaces from './pages/CaptivityPlaces';
 import NumberLeft from './pages/NumberLeft';
-import EndangeredCaptivityPlaces from './pages/EndangeredCaptivityPlaces';
 import EndangeredHabitats from './pages/EndangeredHabitats';
 import EndangeredNonprofits from './pages/EndangeredNonprofits';
 
@@ -47,7 +46,6 @@ export default class App extends React.Component {
         {numberLeftId: 4, animalId: 4, inCaptivity: 0, inWild: 5350, decade: 2010, conservationStatus: "endangered"},
         {numberLeftId: 5, animalId: 1, inCaptivity: 0, inWild: 2500, decade: 2000, conservationStatus: "endangered"}
       ],
-      endangeredCaptivityPlaces: [{animalId: 4, zooId: 1}],
       endangeredHabitats: [
         {animalId: 1, habitatId: 2},
         {animalId: 2, habitatId: 3},
@@ -74,8 +72,15 @@ export default class App extends React.Component {
     console.log(table);
   }
 
-  delete(table, idOne, idTwo) {
-    console.log(table, idOne, idTwo);
+  delete(table, data) {
+    console.log(table, data);
+    switch (table) {
+      case 'endangeredNonprofits':
+      case 'endangeredHabitats':
+      case '':
+        break;
+      default: 
+    }
   }
 
   render(){
@@ -101,9 +106,6 @@ export default class App extends React.Component {
                 <Link to="/endangered-habitats">Endangered Species + Habitats </Link>
               </li>
               <li>
-                <Link to="/endangered-captivity-places">Endangered Species + Captivity Places </Link>
-              </li>
-              <li>
                 <Link to="/captivity-places">Captivity Places Table</Link>
               </li>
               <li>
@@ -115,9 +117,6 @@ export default class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/endangered-captivity-places">
-              <EndangeredCaptivityPlaces data={this.state.endangeredCaptivityPlaces} title="Endangered Species + Captivity Places" description="Inner join table for endangered species and their captivity places" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
-            </Route>
             <Route path="/endangered-habitats">
               <EndangeredHabitats data={this.state.endangeredHabitats} title="Endangered Species + Native Habitats" description="Inner join table for endangered species and where they naturally reside" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
