@@ -46,7 +46,7 @@ ul#menu li a {
 }
 
 ul#menu li a:hover {
-  color: red;
+  color: teal;
 }
 
 .nes-table.is-dark::before {

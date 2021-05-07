@@ -9,6 +9,7 @@ export default class Species extends Table {
             <tr key={species.animalId}>
                 <td>{species.animalId}</td>
                 <td>{species.scientificName}</td>
+                <td>{species.commonName}</td>
                 <td>{species.genus}</td>
                 <td>{species.family}</td>
                 <td>{species.order}</td>

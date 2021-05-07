@@ -19,6 +19,7 @@ export default class Table extends React.Component {
     renderTableHeader() {
         if (this.state.data && this.state.data.length) {
             let header = Object.keys(this.state.data[0]);
+            header.push("");
             return <tr>{header.map((key, index) => <th key={index}>{key}</th>)}</tr>
         } 
     }
@@ -41,7 +42,6 @@ export default class Table extends React.Component {
                 let tdArray = Array.from(tr[i].getElementsByTagName("td"));
                 let found = tdArray.find((el) =>  {
                     let reg = new RegExp(`${filter}`);
-                    console.log(reg, el, filter, reg.test(filter))
                     return reg.test(el.innerText.toUpperCase());
                 }); // regex test partial string
                 if (found) {
@@ -75,7 +75,7 @@ export default class Table extends React.Component {
         </form> 
         <label>Search</label>
         <input type="text" id="myInput" onKeyUp={this.search} placeholder="Search for ..."/><br/>
-        <table className="nes-table is-bordered is-centered is-rounded is-dark myTable">
+        <table className="myTable">
             <thead>
             {this.renderTableHeader()}
             </thead>
