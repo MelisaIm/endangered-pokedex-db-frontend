@@ -37,9 +37,9 @@ export default class Table extends React.Component {
         </div>
         <form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
             {this.state.data && this.state.data.length && Object.keys(this.state.data[0]).map((key, index) => {
-                return (<div className="formItem">
-                        <label key={index} for={key}>{key}</label><br/>
-                        <input type="text" id={key} name={key}/><br/><br/>
+                return (<div key={`div-${index}-${key}`} className="formItem">
+                        <label key={`label-${index}-${key}`}>{key}</label><br/>
+                        <input key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
                 </div>
                 )
             })}
