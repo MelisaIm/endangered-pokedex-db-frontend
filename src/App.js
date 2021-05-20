@@ -13,57 +13,52 @@ import CaptivityPlaces from './pages/CaptivityPlaces';
 import NumberLeft from './pages/NumberLeft';
 import EndangeredHabitats from './pages/EndangeredHabitats';
 import EndangeredNonprofits from './pages/EndangeredNonprofits';
+import axios from 'axios';
+
+const endpoint = 'http://flip1.engr.oregonstate.edu:60500/';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      animals: [
+      endangeredSpecies: [
         {animalId: 1, scientificName: "Bubalus quarlesi", commonName: "mountain anoa", genus: "Bubalus", family: "Bovidae", order: "Artiodactyla", class: "Mammalia", phylum: "Chordata", cause: "hunting", photoUrl: "https://blog.nationalgeographic.org/wp-content/uploads/2018/02/Anoa-cropped-720x502.jpg", lastUpdate: "2021-04-26", captivityPlaceId: "NULL"},
-        {animalId: 2, scientificName: "Platanista gangetica", commonName: "South Asian river dolphin", genus: "Platanista", family: "Platanistidae", order: "Artiodactyla", class: "Mammalia", phylum: "Chordata", cause: "habitat disruption", photoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Platanista_gangetica_noaa.jpg/1920px-Platanista_gangetica_noaa.jpg", lastUpdate: "2021-04-26", captivityPlaceId: "NULL"},
-        {animalId: 3, scientificName: "Leopardus jacobita", commonName: "Andrean mountain cat", genus: "Leopardus", family: "Felidae", order: "Carnivora", class: "Mammalia", phylum: "Chordata", cause: "habitat loss", photoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Andean_cat_1_Jim_Sanderson.jpg/1024px-Andean_cat_1_Jim_Sanderson.jpg", lastUpdate: "2021-04-26", captivityPlaceId: "NULL"},
-        {animalId: 4, scientificName: "Chinchilla lanigera", commonName: "long-tailed chinchilla", genus: "Chinchilla", family: "Chinchillidae", order: "Rodentia", class: "Mammalia", phylum: "Chordata", cause: "hunting", photoUrl: "https://www.globalwildlife.org/wp-content/uploads/2020/06/M121_001_001-03.jpeg", lastUpdate: "2021-04-26", captivityPlaceId: 1}
       ],
       nonprofits: [
         {nonprofitId: 1, nonprofitName: "Alianza Gato Andino", nonprofitWebsite: "https://gatoandino.org/en/home/"},
-        {nonprofitId: 2, nonprofitName: "World Wild Life", nonprofitWebsite: "https://www.worldwildlife.org/"},
-        {nonprofitId: 3, nonprofitName: "Whale and Dolphin Conservation", nonprofitWebsite: "https://us.whales.org/"},
-        {nonprofitId: 4, nonprofitName: "Save the Wild Chinchillas", nonprofitWebsite: "https://www.savethewildchinchillas.org/"}
       ],
       nativeHabitats: [
         {habitatId: 1, continent: "South America", country: "Chile", biome: "alpine tundra", nativeHabitatCoordinates: "32°S 70°W "},
-        {habitatId: 2, continent: "Asia", country: "Indonesia", biome: "rainforest", nativeHabitatCoordinates: "02°S 121°E"},
-        {habitatId: 3, continent: "Asia", country: "India", biome: "freshwater", nativeHabitatCoordinates: "25.30°N 83.01°E"}
       ],
       captivityPlaces: [
         {zooId: 1, zooName: "Smithsonian's National Zoo", zooState: "Washington D.C.", zooCountry: "United States of America", zooCoordinates: "38.9296°N 77.0498°W"}
       ],
       numberLeft: [
         {numberLeftId: 1, animalId: 1, inCaptivity: 0, inWild: 2500, decade: 2010, conservationStatus: "endangered"},
-        {numberLeftId: 2, animalId: 2, inCaptivity: 0, inWild: 5000, decade: 2010, conservationStatus: "endangered"},
-        {numberLeftId: 3, animalId: 3, inCaptivity: 0, inWild: 1378, decade: 2010, conservationStatus: "endangered"},
-        {numberLeftId: 4, animalId: 4, inCaptivity: 0, inWild: 5350, decade: 2010, conservationStatus: "endangered"},
-        {numberLeftId: 5, animalId: 1, inCaptivity: 0, inWild: 2500, decade: 2000, conservationStatus: "endangered"}
       ],
       endangeredHabitats: [
         {animalId: 1, habitatId: 2},
-        {animalId: 2, habitatId: 3},
-        {animalId: 3, habitatId: 1},
-        {animalId: 4, habitatId: 1}
       ],
       endangeredNonprofits: [
         {animalId: 3, nonprofitId: 1},
-        {animalId: 2, nonprofitId: 3},
-        {animalId: 4, nonprofitId: 4},
-        {animalId: 1, nonprofitId: 2},
-        {animalId: 2, nonprofitId: 2},
-        {animalId: 3, nonprofitId: 2},
-        {animalId: 4, nonprofitId: 2}
       ]
     }
 
+
     this.delete = this.delete.bind(this);
+  }
+
+  componentDidMount() {
+    const tables = ['endangeredSpecies', 'captivityPlaces', 'nativeHabitats', 'nonprofits', 'numberLeft', 'endangeredHabitats', 'endangeredNonprofits'];
+    
+    tables.forEach((table) => {
+      axios.get(`${endpoint}get/${table}`).then((res) => {
+        if (res.status === 200) {
+          this.setState({[table]: res.data});
+        }
+      }).catch(console.error);
+    })
   }
 
   update(table, property, newValue) {
@@ -168,7 +163,7 @@ export default class App extends React.Component {
               <EndangeredNonprofits data={this.state.endangeredNonprofits} title="Endangered Species + Nonprofits" description="Inner join table for endangered species and the nonprofits working to protect and preserve them" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
             <Route path={["/","/species"]}>
-              <Species data={this.state.animals} title="Endangered Species" description="This table is about endangered species" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
+              <Species data={this.state.endangeredSpecies} title="Endangered Species" description="This table is about endangered species" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
           </Switch>
         </div>
