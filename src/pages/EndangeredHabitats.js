@@ -7,8 +7,10 @@ export default class EndangeredHabitats extends Table {
         return this.props.data.map((dataPoint, index) => 
             // data row
             <tr key={index}>
+                <td>{dataPoint.animal}</td>
                 <td>{dataPoint.animalId}</td>
                 <td>{dataPoint.habitatId}</td>
+                <td>{dataPoint.location}</td>
                 <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
             </tr>
         );
