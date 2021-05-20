@@ -15,8 +15,8 @@ import EndangeredHabitats from './pages/EndangeredHabitats';
 import EndangeredNonprofits from './pages/EndangeredNonprofits';
 import axios from 'axios';
 
-// const endpoint = 'http://flip1.engr.oregonstate.edu:60500/';
-const endpoint = 'http://localhost:60500/';
+const endpoint = 'http://flip1.engr.oregonstate.edu:60500/';
+// const endpoint = 'http://localhost:60500/'; //dev endpoint
 
 export default class App extends React.Component {
   constructor(props) {

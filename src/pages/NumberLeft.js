@@ -4,7 +4,6 @@ import Table from '../TableBase';
 export default class NumberLeft extends Table {
 
     renderTable() {
-        console.log(this.props.data);
         return this.props.data.map(dataPoint => 
             // data row
             <tr key={dataPoint.numberLeftId}>
