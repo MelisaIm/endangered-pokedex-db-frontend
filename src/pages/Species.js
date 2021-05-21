@@ -11,7 +11,9 @@ export default class Species extends Table {
         var object = {};
         formData.forEach((value, key) => object[key] = value);
 
-        axios.post(`${endpoint}insert/endangeredSpecies`, object).then(console.log);
+        axios.post(`${endpoint}insert/endangeredSpecies`, object).then(((res) => window.location.reload())).catch(() => {
+            alert('Insert to endangered species table failed');
+        });
     }
 
     renderForm() {
