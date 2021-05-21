@@ -15,8 +15,7 @@ import EndangeredHabitats from './pages/EndangeredHabitats';
 import EndangeredNonprofits from './pages/EndangeredNonprofits';
 import axios from 'axios';
 
-const endpoint = 'http://flip1.engr.oregonstate.edu:60500/';
-// const endpoint = 'http://localhost:60500/'; //dev endpoint
+export const endpoint = process.env.NODE_ENV === "development" ? 'http://localhost:60500/' : 'http://flip1.engr.oregonstate.edu:60500/';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -54,7 +53,7 @@ export default class App extends React.Component {
     const tables1 = ['endangeredSpecies', 'captivityPlaces', 'nativeHabitats', 'nonprofits'];
     
     tables1.forEach((table) => {
-      axios.get(`${endpoint}get/${table}`).then((res) => {
+      axios.get(`${endpoint}select/${table}`).then((res) => {
         if (res.status === 200) {
           this.setState({[table]: res.data});
         }
@@ -63,14 +62,14 @@ export default class App extends React.Component {
 
     const tables2 = [{table1: 'endangeredHabitats', table2: 'nativeHabitats', commonKey: 'habitatId'}, {table1: 'endangeredNonprofits', table2: 'nonprofits', commonKey: 'nonprofitId'}];
     tables2.forEach((table) => {
-      axios.get(`${endpoint}get/${table.table1}/${table.table2}/${table.commonKey}`).then((res) => {
+      axios.get(`${endpoint}select/${table.table1}/${table.table2}/${table.commonKey}`).then((res) => {
         if (res.status === 200) {
           this.setState({[table.table1]: res.data});
         }
       }).catch(console.error);
     });
 
-    axios.get(`${endpoint}get/numberLeft`).then((res) => {
+    axios.get(`${endpoint}select/numberLeft`).then((res) => {
       if (res.status === 200) {
         this.setState({numberLeft: res.data});
       }

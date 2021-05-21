@@ -20,8 +20,6 @@ export default class Table extends React.Component {
 
     onClickAdd(e) {
         e.preventDefault();
-        //TODO
-        alert("I don't do anything yet!");
     }
 
     onClickDelete = (data, table) => {
@@ -61,22 +59,27 @@ export default class Table extends React.Component {
         }   
     }
 
+    renderForm() {
+        return (<form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
+            {this.props.data && this.props.data.length && Object.keys(this.props.data[0]).map((key, index) => {
+                if (index > 0) {
+                    return (<div key={`div-${index}-${key}`} className="formItem">
+                            <label key={`label-${index}-${key}`}>{key}</label><br/>
+                            <input key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
+                    </div>)
+                    }
+            })}
+            <input type="submit" value="Add Row"/>
+        </form>) 
+    }
+
     render() {
         return (<div className="tableClass">
         <div className="nes-container with-title is-rounded">
             <p className="title">{this.props.title}</p>
             <p>{this.props.description}</p>
         </div>
-        <form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
-            {this.props.data && this.props.data.length && Object.keys(this.props.data[0]).map((key, index) => {
-                return (<div key={`div-${index}-${key}`} className="formItem">
-                        <label key={`label-${index}-${key}`}>{key}</label><br/>
-                        <input key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
-                </div>
-                )
-            })}
-            <input type="submit" value="Add Row"/>
-        </form> 
+        {this.renderForm()}
         <label>Search</label>
         <input type="text" id="myInput" onKeyUp={this.search} placeholder="Search for ..."/><br/>
         <table className="myTable">
