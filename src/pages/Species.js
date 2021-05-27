@@ -17,12 +17,20 @@ export default class Species extends Table {
     }
 
     renderForm() {
-        const inputs = ['scientificName', 'commonName', 'genus', 'family', 'order', 'class', 'phylum', 'cause', 'photoUrl', 'captivityPlaceId'];
+        const inputs = ['scientificName', 'commonName', 'genus', 'family', 'order', 'class', 'phylum', 'cause', 'photoUrl'];
         return (<form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
                     {inputs.map((key, index) => <div key={`div-${index}-${key}`} className="formItem">
                             <label key={`label-${index}-${key}`}>{key}</label><br/>
                             <input required key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
                     </div>)}
+                    <div className="formItem">
+                    <label for="captivityPlace">Choose a captivityPlace</label>
+                        <select name="captivityPlaceId" id="captivityPlace">
+                        {this.props.captivityPlaces.map((value, index) => {
+                            return <option required key={index} value={value.zooId}>{`${value.zooName}`}</option>
+                        })}
+                        </select> 
+                    </div>
             <input type="submit" value="Add Row"/>
         </form>) 
     }

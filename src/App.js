@@ -181,7 +181,7 @@ export default class App extends React.Component {
               <EndangeredNonprofits data={this.state.endangeredNonprofits} endangeredSpecies={this.state.endangeredSpecies} nonprofits={this.state.nonprofits} title="Endangered Species + Nonprofits" description="Inner join table for endangered species and the nonprofits working to protect and preserve them" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
             <Route path={["/","/species"]}>
-              <Species data={this.state.endangeredSpecies} title="Endangered Species" description="This table is about endangered species" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
+              <Species data={this.state.endangeredSpecies} captivityPlaces={this.state.captivityPlaces} title="Endangered Species" description="This table is about endangered species" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
           </Switch>
         </div>
