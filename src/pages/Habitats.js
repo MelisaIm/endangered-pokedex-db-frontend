@@ -1,5 +1,7 @@
 import React from 'react';
 import Table from '../TableBase';
+import {endpoint} from '../App';
+import axios from 'axios';
 
 export default class Habitats extends Table {
 
