@@ -50,6 +50,8 @@ export default class App extends React.Component {
     this.delete = this.delete.bind(this);
   }
 
+// add hook to fetch new data on inserts
+
   componentDidMount() {
     const tables1 = ['endangeredSpecies', 'captivityPlaces', 'nativeHabitats', 'nonprofits'];
     
@@ -161,10 +163,10 @@ export default class App extends React.Component {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/endangered-habitats">
-              <EndangeredHabitats data={this.state.endangeredHabitats} title="Endangered Species + Native Habitats" description="Inner join table for endangered species and where they naturally reside" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
+              <EndangeredHabitats data={this.state.endangeredHabitats} endangeredSpecies={this.state.endangeredSpecies} nativeHabitats={this.state.nativeHabitats} title="Endangered Species + Native Habitats" description="Inner join table for endangered species and where they naturally reside" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
             <Route path="/number-left">
-              <NumberLeft data={this.state.numberLeft} title="Number Left by Decade" description="This table shows how many per species remain per decade" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
+              <NumberLeft data={this.state.numberLeft} endangeredSpecies={this.state.endangeredSpecies} title="Number Left by Decade" description="This table shows how many per species remain per decade" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
             <Route path="/captivity-places">
                 <CaptivityPlaces data={this.state.captivityPlaces} title="Captivity Places" description="This table is about places where these species live in captivity" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
@@ -176,10 +178,10 @@ export default class App extends React.Component {
               <Nonprofits data={this.state.nonprofits} title="Nonprofits" description="This table is about nonprofits that work to preserve and revitalize fauna" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
             <Route path="/endangered-nonprofits">
-              <EndangeredNonprofits data={this.state.endangeredNonprofits} title="Endangered Species + Nonprofits" description="Inner join table for endangered species and the nonprofits working to protect and preserve them" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
+              <EndangeredNonprofits data={this.state.endangeredNonprofits} endangeredSpecies={this.state.endangeredSpecies} nonprofits={this.state.nonprofits} title="Endangered Species + Nonprofits" description="Inner join table for endangered species and the nonprofits working to protect and preserve them" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
             <Route path={["/","/species"]}>
-              <Species data={this.state.endangeredSpecies} title="Endangered Species" description="This table is about endangered species" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
+              <Species data={this.state.endangeredSpecies} captivityPlaces={this.state.captivityPlaces} title="Endangered Species" description="This table is about endangered species" onCreate={this.create} onDelete={this.delete} onUpdate={this.update}/>
             </Route>
           </Switch>
         </div>
