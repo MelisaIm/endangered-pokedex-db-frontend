@@ -19,7 +19,7 @@ export default class EndangeredNonprofits extends Table {
         // const inputs = ['endangeredSpecies', 'nonprofits'];
         return (<form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
                     <div className="formItem">
-                    <label HtmlFor="endangeredSpecies">Choose an endangered species:</label>
+                    <label htmlFor="endangeredSpecies">Choose an endangered species:</label>
                         <select name="animalId" id="animals">
                         {this.props.endangeredSpecies.map((value, index) => {
                             return <option value={value.animalId} key={index}>{`${value.commonName} (${value.scientificName})`}</option>
@@ -27,7 +27,7 @@ export default class EndangeredNonprofits extends Table {
                         </select> 
                     </div>
                     <div className="formItem">
-                    <label HtmlFor="nonprofits">Choose a nonprofit:</label>
+                    <label htmlFor="nonprofits">Choose a nonprofit:</label>
                         <select name="nonprofitId" id="nonprofit">
                         {this.props.nonprofits.map((value, index) => {
                             return <option value={value.nonprofitId} key={index}>{`${value.nonprofitName}`}</option>

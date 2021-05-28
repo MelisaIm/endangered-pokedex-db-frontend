@@ -25,7 +25,7 @@ export default class NumberLeft extends Table {
                             <input required key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
                     </div>)}
                     <div className="formItem">
-                    <label HtmlFor="conservationStatus">Endangered Status: </label>
+                    <label htmlFor="conservationStatus">Endangered Status: </label>
                         <select name="conservationStatus" id="conservationStatus">
                         {conservationStatusList.map((value, index) => {
                             return <option required key={index} value={value}>{`${value}`}</option>
@@ -33,7 +33,7 @@ export default class NumberLeft extends Table {
                         </select> 
                     </div>
                     <div className="formItem">
-                    <label HtmlFor="animal">Endangered Species: </label>
+                    <label htmlFor="animal">Endangered Species: </label>
                         <select name="animalId" id="animals">
                         {this.props.endangeredSpecies.map((value, index) => {
                             return <option value={value.animalId} key={index}>{`${value.commonName} (${value.scientificName})`}</option>
