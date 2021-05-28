@@ -2,9 +2,6 @@ import React from 'react';
 import './TableBase.css'
 
 export default class Table extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     renderTable(data) {
         // override in children
@@ -22,10 +19,8 @@ export default class Table extends React.Component {
         e.preventDefault();
     }
 
-    onClickDelete = (data, table) => {
-        if (table == 'animals') { //only delete animals for now
-            this.props.onDelete(table, data);
-        }
+    onClickDelete = (table, data) => {
+        this.props.onDelete(table, data);
     }
 
     onClickUpdate(data, table) {
@@ -67,7 +62,7 @@ export default class Table extends React.Component {
                             <label key={`label-${index}-${key}`}>{key}</label><br/>
                             <input key={`input-${index}-${key}`} type="text" id={key} name={key}/><br/><br/>
                     </div>)
-                    }
+                }
             })}
             <input type="submit" value="Add Row"/>
         </form>) 

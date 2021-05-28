@@ -51,7 +51,7 @@ export default class Species extends Table {
                 <td>{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
                 <td>{species.captivityPlaceId}</td>
-                <td><button onClick={() => this.onClickUpdate(species, "animals")}>Save Changes</button><button onClick={() => this.onClickDelete(species, "animals")}>Delete</button></td>
+                <td><button onClick={() => this.onClickUpdate(species, "endangeredSpecies")}>Save Changes</button><button onClick={() => this.onClickDelete('endangeredSpecies', {data: {animalId: species.animalId}})}>Delete</button></td>
             </tr>
         );
     }

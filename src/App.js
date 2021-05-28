@@ -87,45 +87,10 @@ export default class App extends React.Component {
     console.log(table);
   }
 
-  delete(table, data) {
-    const dataArr = this.state[table];
-    let idOne = 'animalId', idTwo;
-    switch (table) {
-      case 'endangeredNonprofits':
-        idOne = 'animalId';
-        idTwo = 'nonprofitId';
-        break;
-      case 'endangeredHabitats':
-        idOne = 'animalId';
-        idTwo = 'habitatId';
-        break;
-      case 'nonprofits':
-        idOne = 'nonprofitId';
-        break;
-      case 'habitats':
-        idOne = 'habitatId';
-        break;
-      case 'captivityPlaces':
-        idOne = 'zooId';
-        break;
-      case 'numberLeft':
-        idOne = 'numberLeftId';
-        break;
-    }
-    if (idTwo) {
-      const newArr = dataArr.map((obj) => {
-        if (obj[idOne] !== data[idOne] || obj[idTwo] !== data[idTwo]) {
-          return obj; 
-        }
-      })
-    }
-
-    const newArr = dataArr.map((obj) => {
-      if (obj[idOne] !== data[idOne]) {
-        return obj;
-      }
-    }).filter((el) => el !== undefined);
-    this.setState({[table]: newArr});
+  delete(table, object) {
+    axios.delete(`${endpoint}delete/${table}`, object).then(((res) => {console.log(res); window.location.reload()})).catch(() => {
+        alert(`Delete to ${table} table failed`);
+    });
   }
 
   render(){
