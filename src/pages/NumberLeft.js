@@ -55,7 +55,7 @@ export default class NumberLeft extends Table {
                 <td>{dataPoint.conservationStatus}</td>
                 <td>{dataPoint.animal}</td>
                 <td>{dataPoint.animalId}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={() => this.onClickDelete('numberLeft', {data: {numberLeftId: dataPoint.numberLeftId}})}>Delete</button></td>
             </tr>
         );
     }
