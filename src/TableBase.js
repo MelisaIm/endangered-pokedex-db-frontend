@@ -23,8 +23,8 @@ export default class Table extends React.Component {
         this.props.onDelete(table, data);
     }
 
-    onClickUpdate(data, table) {
-        console.log("test", data);
+    onClickUpdate = (table, data) => {
+        this.props.onUpdate(table, data);
     }
 
     search(e) {        

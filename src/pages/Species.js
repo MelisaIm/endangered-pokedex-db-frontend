@@ -17,7 +17,7 @@ export default class Species extends Table {
     }
 
     renderForm() {
-        const inputs = ['scientificName', 'commonName', 'genus', 'family', 'order', 'class', 'phylum', 'cause', 'photoUrl'];
+        const inputs = ['scientificName', 'commonName', 'genus', 'family', 'kingdomOrder', 'class', 'phylum', 'cause', 'photoUrl'];
         return (<form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
                     {inputs.map((key, index) => <div key={`div-${index}-${key}`} className="formItem">
                             <label key={`label-${index}-${key}`}>{key}</label><br/>
@@ -40,18 +40,18 @@ export default class Species extends Table {
             // data row
             <tr key={species.animalId}>
                 <td>{species.animalId}</td>
-                <td>{species.scientificName}</td>
-                <td>{species.commonName}</td>
-                <td>{species.genus}</td>
-                <td>{species.family}</td>
-                <td>{species.order}</td>
-                <td>{species.class}</td>
-                <td>{species.phylum}</td>
-                <td>{species.cause}</td>
-                <td>{species.photoUrl}</td>
+                <td contentEditable>{species.scientificName}</td>
+                <td contentEditable>{species.commonName}</td>
+                <td contentEditable>{species.genus}</td>
+                <td contentEditable>{species.family}</td>
+                <td contentEditable>{species.kingdomOrder}</td>
+                <td contentEditable>{species.class}</td>
+                <td contentEditable>{species.phylum}</td>
+                <td contentEditable>{species.cause}</td>
+                <td contentEditable>{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
-                <td>{species.captivityPlaceId}</td>
-                <td><button onClick={() => this.onClickUpdate(species, "endangeredSpecies")}>Save Changes</button><button 
+                <td contentEditable>{species.captivityPlaceId}</td>
+                <td><button onClick={() => this.onClickUpdate("endangeredSpecies", {...species})}>Save Changes</button><button 
                 onClick={() => this.onClickDelete('endangeredSpecies', {data: {animalId: species.animalId}})}>Delete</button></td>
             </tr>
         );
