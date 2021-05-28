@@ -12,7 +12,7 @@ export default class Nonprofits extends Table {
         formData.forEach((value, key) => object[key] = value);
 
         axios.post(`${endpoint}insert/nonprofits`, object).then(((res) => window.location.reload())).catch(() => {
-            alert('Insert to endangered species table failed');
+            alert('Insert to nonprofits table failed');
         });
     }
 

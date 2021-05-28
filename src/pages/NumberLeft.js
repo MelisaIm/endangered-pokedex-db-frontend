@@ -12,7 +12,7 @@ export default class NumberLeft extends Table {
         formData.forEach((value, key) => object[key] = value);
 
         axios.post(`${endpoint}insert/endangeredSpecies`, object).then(((res) => window.location.reload())).catch(() => {
-            alert('Insert to endangered species table failed');
+            alert('Insert to numberLeft table failed');
         });
     }
 
