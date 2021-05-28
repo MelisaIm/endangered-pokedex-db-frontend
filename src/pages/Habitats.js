@@ -35,7 +35,8 @@ export default class Habitats extends Table {
                 <td>{habitat.country}</td>
                 <td>{habitat.biome}</td>
                 <td>{habitat.nativeHabitatCoordinates}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <button onClick={() => this.onClickDelete('nativeHabitats', {data: {habitatId: habitat.habitatId}})}>Delete</button></td>
             </tr>
         );
     }
