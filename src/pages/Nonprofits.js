@@ -34,7 +34,8 @@ export default class Nonprofits extends Table {
                 <td>{nonprofit.nonprofitId}</td>
                 <td>{nonprofit.nonprofitName}</td>
                 <td>{nonprofit.nonprofitWebsite}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <button onClick={() => this.onClickDelete('nonprofits', {data: {nonprofitId: nonprofit.nonprofitId}})}>Delete</button></td>
             </tr>
         );
     }

@@ -46,7 +46,8 @@ export default class EndangeredNonprofits extends Table {
                 <td>{dataPoint.nonprofit}</td>
                 <td>{dataPoint.animalId}</td>
                 <td>{dataPoint.nonprofitId}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={this.onClickDelete}>Delete</button></td>
+                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <button onClick={() => this.onClickDelete('endangeredNonprofits', {data: {animalId: dataPoint.animalId, nonprofitId: dataPoint.nonprofitId}})}>Delete</button></td>
             </tr>
         );
     }
