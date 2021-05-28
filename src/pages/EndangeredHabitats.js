@@ -45,7 +45,7 @@ export default class EndangeredHabitats extends Table {
                 <td>{dataPoint.habitatId}</td>
                 <td>{dataPoint.location}</td>
                 <td><button onClick={this.onClickUpdate}>Save Changes</button>
-                <button onClick={() => this.onClickDelete('endangeredHabitats', {data: {animalId: dataPoint.animalId, habitatId: dataPoint.habitatId}})}>Delete</button></td>
+                <button onClick={() => this.onClickDelete('endangeredHabitats', {data: {endangeredHabitatId: dataPoint.endangeredHabitatId}})}>Delete</button></td>
             </tr>
         );
     }

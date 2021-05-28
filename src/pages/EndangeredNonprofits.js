@@ -39,6 +39,7 @@ export default class EndangeredNonprofits extends Table {
     }
 
     renderTable() {
+        console.log(this.props.data);
         return this.props.data.map((dataPoint, index) => 
             // data row
             <tr key={index}>
@@ -47,7 +48,7 @@ export default class EndangeredNonprofits extends Table {
                 <td>{dataPoint.animalId}</td>
                 <td>{dataPoint.nonprofitId}</td>
                 <td><button onClick={this.onClickUpdate}>Save Changes</button>
-                <button onClick={() => this.onClickDelete('endangeredNonprofits', {data: {animalId: dataPoint.animalId, nonprofitId: dataPoint.nonprofitId}})}>Delete</button></td>
+                <button onClick={() => this.onClickDelete('endangeredNonprofits', {data: {endangeredNonprofitId: dataPoint.endangeredNonprofitId}})}>Delete</button></td>
             </tr>
         );
     }
