@@ -38,20 +38,37 @@ export default class Species extends Table {
     renderTable() {
         return this.props.data.map(species => 
             // data row
-            <tr key={species.animalId}>
-                <td>{species.animalId}</td>
-                <td contentEditable>{species.scientificName}</td>
-                <td contentEditable>{species.commonName}</td>
-                <td contentEditable>{species.genus}</td>
-                <td contentEditable>{species.family}</td>
-                <td contentEditable>{species.kingdomOrder}</td>
-                <td contentEditable>{species.class}</td>
-                <td contentEditable>{species.phylum}</td>
-                <td contentEditable>{species.cause}</td>
-                <td contentEditable>{species.photoUrl}</td>
+            <tr id={species.animalId} key={species.animalId}>
+                <td className="animalId">{species.animalId}</td>
+                <td contentEditable className="scientificName">{species.scientificName}</td>
+                <td contentEditable className="commonName">{species.commonName}</td>
+                <td contentEditable className="genus">{species.genus}</td>
+                <td contentEditable className="family">{species.family}</td>
+                <td contentEditable className="kingdomOrder">{species.kingdomOrder}</td>
+                <td contentEditable className="class">{species.class}</td>
+                <td contentEditable className="phylum">{species.phylum}</td>
+                <td contentEditable className="cause">{species.cause}</td>
+                <td contentEditable className="photoUrl">{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
-                <td contentEditable>{species.captivityPlaceId}</td>
-                <td><button onClick={() => this.onClickUpdate("endangeredSpecies", {...species})}>Save Changes</button><button 
+                <td contentEditable className="captivityPlaceId">{species.captivityPlaceId}</td>
+                <td><button onClick={(e) => {
+                    const row = document.getElementById(species.animalId);
+                
+                    var object = {
+                        animalId: species.animalId,
+                        scientificName: row.getElementsByClassName("scientificName")[0].innerText || "",
+                        commonName: row.getElementsByClassName("commonName")[0].innerText || "",
+                        genus: row.getElementsByClassName("genus")[0].innerText || "",
+                        family: row.getElementsByClassName("family")[0].innerText || "",
+                        kingdomOrder: row.getElementsByClassName("kingdomOrder")[0].innerText || "",
+                        class: row.getElementsByClassName("class")[0].innerText || "",
+                        phylum: row.getElementsByClassName("phylum")[0].innerText || "",
+                        cause: row.getElementsByClassName("cause")[0].innerText || "",
+                        photoUrl: row.getElementsByClassName("photoUrl")[0].innerText || "",
+                        captivityPlaceId: row.getElementsByClassName("captivityPlaceId")[0].innerText
+                    };
+                    this.onClickUpdate("endangeredSpecies", object)}}
+                    >Save Changes</button><button 
                 onClick={() => this.onClickDelete('endangeredSpecies', {data: {animalId: species.animalId}})}>Delete</button></td>
             </tr>
         );
