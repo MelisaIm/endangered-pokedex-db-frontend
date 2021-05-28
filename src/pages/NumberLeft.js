@@ -33,7 +33,7 @@ export default class NumberLeft extends Table {
                         </select> 
                     </div>
                     <div className="formItem">
-                    <label HtmlFor="animal">Endangered Status: </label>
+                    <label HtmlFor="animal">Endangered Species: </label>
                         <select name="animalId" id="animals">
                         {this.props.endangeredSpecies.map((value, index) => {
                             return <option value={value.animalId} key={index}>{`${value.commonName} (${value.scientificName})`}</option>
