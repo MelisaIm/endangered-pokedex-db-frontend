@@ -16,7 +16,6 @@ export default class EndangeredNonprofits extends Table {
     }
 
     renderForm() {
-        // const inputs = ['endangeredSpecies', 'nonprofits'];
         return (<form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
                     <div className="formItem">
                     <label htmlFor="endangeredSpecies">Choose an endangered species:</label>

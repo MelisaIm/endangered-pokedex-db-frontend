@@ -39,13 +39,21 @@ export default class EndangeredHabitats extends Table {
     renderTable() {
         return this.props.data.map((dataPoint, index) => 
             // data row
-            <tr key={index}>
+            <tr id={dataPoint.endangeredHabitatId} key={index}>
                 <td>{dataPoint.endangeredHabitatId}</td>
                 <td>{dataPoint.animal}</td>
-                <td>{dataPoint.animalId}</td>
-                <td>{dataPoint.habitatId}</td>
+                <td contentEditable className="animalId">{dataPoint.animalId}</td>
+                <td contentEditable className="habitatId">{dataPoint.habitatId}</td>
                 <td>{dataPoint.location}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <td><button onClick={() => {
+                    const row = document.getElementById(dataPoint.endangeredHabitatId);
+                    const object = {
+                        endangeredHabitatId: dataPoint.endangeredHabitatId,
+                        animalId: row.getElementsByClassName("animalId")[0].innerHTML || "",
+                        habitatId: row.getElementsByClassName("habitatId")[0].innerHTML || "",
+                    }
+                    this.onClickUpdate("endangeredHabitats", object);
+                }}>Save Changes</button>
                 <button onClick={() => this.onClickDelete('endangeredHabitats', {data: {endangeredHabitatId: dataPoint.endangeredHabitatId}})}>Delete</button></td>
             </tr>
         );
