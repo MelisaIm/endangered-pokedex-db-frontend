@@ -96,6 +96,7 @@ export default class App extends React.Component {
       <Router>
         <div>
           <h1 style={{display: "flex", justifyContent: "center"}}>Endangered Pokedex - Bill's PC</h1>
+          <h4>Test on OSU VPN and in Chrome Browser</h4>
           <nav>
             <ul id="menu">
               <li>
