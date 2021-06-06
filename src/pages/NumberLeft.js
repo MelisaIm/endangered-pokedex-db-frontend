@@ -3,6 +3,7 @@ import Table from '../TableBase';
 import {endpoint} from '../App';
 import axios from 'axios';
 
+const conservationStatusList = ['extinct', 'extinct in the wild', 'critically endangered', 'endangered', 'vulnerable', 'near threatened', 'least concern', 'data deficient', 'not evaluated'];
 export default class NumberLeft extends Table {
 
     onClickAdd(e) {
@@ -18,7 +19,6 @@ export default class NumberLeft extends Table {
 
     renderForm() {
         const inputs = ['inCaptivity', 'inWild', 'decade'];
-        const conservationStatusList = ['extinct', 'extinct in the wild', 'critically endangered', 'endangered', 'vulnerable', 'near threatened', 'least concern', 'data deficient', 'not evaluated'];
         return (<form onSubmit={(e) => this.onClickAdd(e)} className="createForm">
                     {inputs.map((key, index) => <div key={`div-${index}-${key}`} className="formItem">
                             <label key={`label-${index}-${key}`}>{key}</label><br/>
@@ -47,15 +47,33 @@ export default class NumberLeft extends Table {
     renderTable() {
         return this.props.data.map(dataPoint => 
             // data row
-            <tr key={dataPoint.numberLeftId}>
+            <tr id={dataPoint.numberLeftId} key={dataPoint.numberLeftId}>
                 <td>{dataPoint.numberLeftId}</td>
-                <td>{dataPoint.inCaptivity}</td>
-                <td>{dataPoint.inWild}</td>
-                <td>{dataPoint.decade}</td>
-                <td>{dataPoint.conservationStatus}</td>
+                <td contentEditable className="inCaptivity">{dataPoint.inCaptivity}</td>
+                <td contentEditable className="inWild">{dataPoint.inWild}</td>
+                <td contentEditable className="decade">{dataPoint.decade}</td>
+                <td contentEditable className="conservationStatus">
+                    <select name="conservationStatus" id="conservationStatusSelect">
+                        {conservationStatusList.map((value, index) => {
+                            return <option selected={value === dataPoint.conservationStatus} required key={index} value={value}>{`${value}`}</option>
+                        })}
+                    </select>
+                    </td> 
                 <td>{dataPoint.animal}</td>
-                <td>{dataPoint.animalId}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button><button onClick={() => this.onClickDelete('numberLeft', {data: {numberLeftId: dataPoint.numberLeftId}})}>Delete</button></td>
+                <td contentEditable className="animalId">{dataPoint.animalId}</td>
+                <td><button onClick={() => {
+                    const row = document.getElementById(dataPoint.numberLeftId);
+                    const object = {
+                        numberLeftId: dataPoint.numberLeftId,
+                        inCaptivity: row.getElementsByClassName('inCaptivity')[0].innerText || "",
+                        inWild: row.getElementsByClassName('inWild')[0].innerText || "",
+                        decade: row.getElementsByClassName('decade')[0].innerText || "",
+                        conservationStatus: document.getElementById('conservationStatusSelect').value || "",
+                        animalId: row.getElementsByClassName('animalId')[0].innerText || ""
+                    }
+
+                    this.onClickUpdate("numberLeft", object);
+                }}>Save Changes</button><button onClick={() => this.onClickDelete('numberLeft', {data: {numberLeftId: dataPoint.numberLeftId}})}>Delete</button></td>
             </tr>
         );
     }
