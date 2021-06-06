@@ -29,13 +29,23 @@ export default class Habitats extends Table {
     renderTable() {
         return this.props.data.map(habitat => 
             // data row
-            <tr key={habitat.habitatId}>
+            <tr id={habitat.habitatId} key={habitat.habitatId}>
                 <td>{habitat.habitatId}</td>
-                <td>{habitat.continent}</td>
-                <td>{habitat.country}</td>
-                <td>{habitat.biome}</td>
-                <td>{habitat.nativeHabitatCoordinates}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <td contentEditable className="continent">{habitat.continent}</td>
+                <td contentEditable className="country">{habitat.country}</td>
+                <td contentEditable className="biome">{habitat.biome}</td>
+                <td contentEditable className="nativeHabitatCoordinates">{habitat.nativeHabitatCoordinates}</td>
+                <td><button onClick={() => {
+                    const row = document.getElementById(habitat.habitatId);
+                    const object = {
+                        habitatId: habitat.habitatId,
+                        continent: row.getElementsByClassName("continent")[0].innerText || "",
+                        country: row.getElementsByClassName("country")[0].innerText || "",
+                        biome: row.getElementsByClassName("biome")[0].innerText || "",
+                        nativeHabitatCoordinates: row.getElementsByClassName("nativeHabitatCoordinates")[0].innerText || "",
+                    }
+                    this.onClickUpdate("nativeHabitats", object);
+                }}>Save Changes</button>
                 <button onClick={() => this.onClickDelete('nativeHabitats', {data: {habitatId: habitat.habitatId}})}>Delete</button></td>
             </tr>
         );

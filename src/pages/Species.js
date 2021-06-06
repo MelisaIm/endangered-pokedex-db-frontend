@@ -65,7 +65,7 @@ export default class Species extends Table {
                         phylum: row.getElementsByClassName("phylum")[0].innerText || "",
                         cause: row.getElementsByClassName("cause")[0].innerText || "",
                         photoUrl: row.getElementsByClassName("photoUrl")[0].innerText || "",
-                        captivityPlaceId: row.getElementsByClassName("captivityPlaceId")[0].innerText
+                        captivityPlaceId: row.getElementsByClassName("captivityPlaceId")[0].innerText || ""
                     };
                     this.onClickUpdate("endangeredSpecies", object)}}
                     >Save Changes</button><button 
