@@ -54,7 +54,7 @@ export default class Species extends Table {
                 <td><button onClick={(e) => {
                     const row = document.getElementById(species.animalId);
                 
-                    var object = {
+                    const object = {
                         animalId: species.animalId,
                         scientificName: row.getElementsByClassName("scientificName")[0].innerText || "",
                         commonName: row.getElementsByClassName("commonName")[0].innerText || "",

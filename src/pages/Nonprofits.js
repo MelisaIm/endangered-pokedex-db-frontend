@@ -30,11 +30,20 @@ export default class Nonprofits extends Table {
     renderTable() {
         return this.props.data.map(nonprofit => 
             // data row
-            <tr key={nonprofit.nonprofitId}>
+            <tr id={nonprofit.nonprofitId} key={nonprofit.nonprofitId}>
                 <td>{nonprofit.nonprofitId}</td>
-                <td>{nonprofit.nonprofitName}</td>
-                <td>{nonprofit.nonprofitWebsite}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <td contentEditable className="nonprofitName">{nonprofit.nonprofitName}</td>
+                <td contentEditable className="nonprofitWebsite">{nonprofit.nonprofitWebsite}</td>
+                <td><button onClick={(e) => {
+                    const row = document.getElementById(nonprofit.nonprofitId);
+                    const object = {
+                        nonprofitId: nonprofit.nonprofitId,
+                        nonprofitName: row.getElementsByClassName("nonprofitName")[0].innerText || "",
+                        nonprofitWebsite: row.getElementsByClassName("nonprofitWebsite")[0].innerText || ""
+                    }
+                    console.log(object);
+                    this.onClickUpdate("nonprofits", object)
+                }}>Save Changes</button>
                 <button onClick={() => this.onClickDelete('nonprofits', {data: {nonprofitId: nonprofit.nonprofitId}})}>Delete</button></td>
             </tr>
         );
