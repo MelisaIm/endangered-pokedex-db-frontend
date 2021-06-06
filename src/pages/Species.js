@@ -26,6 +26,7 @@ export default class Species extends Table {
                     <div className="formItem">
                     <label htmlFor="captivityPlace">Choose a captivityPlace</label>
                         <select name="captivityPlaceId" id="captivityPlace">
+                            <option required key={"None"} value="">Not Applicable</option>
                         {this.props.captivityPlaces.map((value, index) => {
                             return <option required key={index} value={value.zooId}>{`${value.zooName}`}</option>
                         })}
