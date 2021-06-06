@@ -44,8 +44,8 @@ export default class EndangeredNonprofits extends Table {
                 <td>{dataPoint.endangeredNonprofitId}</td>
                 <td>{dataPoint.animal}</td>
                 <td>{dataPoint.nonprofit}</td>
-                <td contentEditable className="animalId">{dataPoint.animalId}</td>
-                <td contentEditable className="nonprofitId">{dataPoint.nonprofitId}</td>
+                <td contentEditable className="animalId editCursor">{dataPoint.animalId}</td>
+                <td contentEditable className="nonprofitId editCursor">{dataPoint.nonprofitId}</td>
                 <td><button onClick={() => {
                     const row = document.getElementById(dataPoint.endangeredNonprofitId);
                     const object = {

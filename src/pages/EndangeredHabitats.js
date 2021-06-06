@@ -42,8 +42,8 @@ export default class EndangeredHabitats extends Table {
             <tr id={dataPoint.endangeredHabitatId} key={index}>
                 <td>{dataPoint.endangeredHabitatId}</td>
                 <td>{dataPoint.animal}</td>
-                <td contentEditable className="animalId">{dataPoint.animalId}</td>
-                <td contentEditable className="habitatId">{dataPoint.habitatId}</td>
+                <td contentEditable className="animalId editCursor">{dataPoint.animalId}</td>
+                <td contentEditable className="habitatId editCursor">{dataPoint.habitatId}</td>
                 <td>{dataPoint.location}</td>
                 <td><button onClick={() => {
                     const row = document.getElementById(dataPoint.endangeredHabitatId);

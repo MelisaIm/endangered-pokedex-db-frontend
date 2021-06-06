@@ -49,10 +49,10 @@ export default class NumberLeft extends Table {
             // data row
             <tr id={dataPoint.numberLeftId} key={dataPoint.numberLeftId}>
                 <td>{dataPoint.numberLeftId}</td>
-                <td contentEditable className="inCaptivity">{dataPoint.inCaptivity}</td>
-                <td contentEditable className="inWild">{dataPoint.inWild}</td>
-                <td contentEditable className="decade">{dataPoint.decade}</td>
-                <td contentEditable className="conservationStatus">
+                <td contentEditable className="inCaptivity editCursor">{dataPoint.inCaptivity}</td>
+                <td contentEditable className="inWild editCursor">{dataPoint.inWild}</td>
+                <td contentEditable className="decade editCursor">{dataPoint.decade}</td>
+                <td contentEditable className="conservationStatus editCursor">
                     <select name="conservationStatus" id="conservationStatusSelect">
                         {conservationStatusList.map((value, index) => {
                             return <option selected={value === dataPoint.conservationStatus} required key={index} value={value}>{`${value}`}</option>
@@ -60,7 +60,7 @@ export default class NumberLeft extends Table {
                     </select>
                     </td> 
                 <td>{dataPoint.animal}</td>
-                <td contentEditable className="animalId">{dataPoint.animalId}</td>
+                <td contentEditable className="animalId editCursor">{dataPoint.animalId}</td>
                 <td><button onClick={() => {
                     const row = document.getElementById(dataPoint.numberLeftId);
                     const object = {

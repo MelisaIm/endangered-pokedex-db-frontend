@@ -41,17 +41,17 @@ export default class Species extends Table {
             // data row
             <tr id={species.animalId} key={species.animalId}>
                 <td className="animalId">{species.animalId}</td>
-                <td contentEditable className="scientificName">{species.scientificName}</td>
-                <td contentEditable className="commonName">{species.commonName}</td>
-                <td contentEditable className="genus">{species.genus}</td>
-                <td contentEditable className="family">{species.family}</td>
-                <td contentEditable className="kingdomOrder">{species.kingdomOrder}</td>
-                <td contentEditable className="class">{species.class}</td>
-                <td contentEditable className="phylum">{species.phylum}</td>
-                <td contentEditable className="cause">{species.cause}</td>
-                <td contentEditable className="photoUrl">{species.photoUrl}</td>
+                <td contentEditable className="scientificName editCursor">{species.scientificName}</td>
+                <td contentEditable className="commonName editCursor">{species.commonName}</td>
+                <td contentEditable className="genus editCursor">{species.genus}</td>
+                <td contentEditable className="family editCursor">{species.family}</td>
+                <td contentEditable className="kingdomOrder editCursor">{species.kingdomOrder}</td>
+                <td contentEditable className="class editCursor">{species.class}</td>
+                <td contentEditable className="phylum editCursor">{species.phylum}</td>
+                <td contentEditable className="cause editCursor">{species.cause}</td>
+                <td contentEditable className="photoUrl editCursor">{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
-                <td contentEditable className="captivityPlaceId">{species.captivityPlaceId}</td>
+                <td contentEditable className="captivityPlaceId editCursor">{species.captivityPlaceId}</td>
                 <td><button onClick={(e) => {
                     const row = document.getElementById(species.animalId);
                 

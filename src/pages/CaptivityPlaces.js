@@ -31,11 +31,11 @@ export default class CaptivityPlaces extends Table {
             // data row
             <tr id={place.zooId} key={place.zooId}>
                 <td>{place.zooId}</td>
-                <td contentEditable className="zooName">{place.zooName}</td>
-                <td contentEditable className="zooCity">{place.zooCity}</td>
-                <td contentEditable className="zooState">{place.zooState}</td>
-                <td contentEditable className="zooCountry">{place.zooCountry}</td>
-                <td contentEditable className="zooCoordinates">{place.zooCoordinates}</td>
+                <td contentEditable className="zooName editCursor">{place.zooName}</td>
+                <td contentEditable className="zooCity editCursor">{place.zooCity}</td>
+                <td contentEditable className="zooState editCursor">{place.zooState}</td>
+                <td contentEditable className="zooCountry editCursor">{place.zooCountry}</td>
+                <td contentEditable className="zooCoordinates editCursor">{place.zooCoordinates}</td>
                 <td><button onClick={() => {
                     const row = document.getElementById(place.zooId);
                     const object = {

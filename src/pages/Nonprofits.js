@@ -32,8 +32,8 @@ export default class Nonprofits extends Table {
             // data row
             <tr id={nonprofit.nonprofitId} key={nonprofit.nonprofitId}>
                 <td>{nonprofit.nonprofitId}</td>
-                <td contentEditable className="nonprofitName">{nonprofit.nonprofitName}</td>
-                <td contentEditable className="nonprofitWebsite">{nonprofit.nonprofitWebsite}</td>
+                <td contentEditable className="nonprofitName editCursor">{nonprofit.nonprofitName}</td>
+                <td contentEditable className="nonprofitWebsite editCursor">{nonprofit.nonprofitWebsite}</td>
                 <td><button onClick={(e) => {
                     const row = document.getElementById(nonprofit.nonprofitId);
                     const object = {

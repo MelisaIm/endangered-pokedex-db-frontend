@@ -52,3 +52,7 @@ ul#menu li a:hover {
 .nes-table.is-dark::before {
   display: none !important;
 }
+
+.editCursor {
+  cursor: text;
+}

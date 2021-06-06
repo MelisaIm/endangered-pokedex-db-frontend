@@ -31,10 +31,10 @@ export default class Habitats extends Table {
             // data row
             <tr id={habitat.habitatId} key={habitat.habitatId}>
                 <td>{habitat.habitatId}</td>
-                <td contentEditable className="continent">{habitat.continent}</td>
-                <td contentEditable className="country">{habitat.country}</td>
-                <td contentEditable className="biome">{habitat.biome}</td>
-                <td contentEditable className="nativeHabitatCoordinates">{habitat.nativeHabitatCoordinates}</td>
+                <td contentEditable className="continent editCursor">{habitat.continent}</td>
+                <td contentEditable className="country editCursor">{habitat.country}</td>
+                <td contentEditable className="biome editCursor">{habitat.biome}</td>
+                <td contentEditable className="nativeHabitatCoordinates editCursor">{habitat.nativeHabitatCoordinates}</td>
                 <td><button onClick={() => {
                     const row = document.getElementById(habitat.habitatId);
                     const object = {
