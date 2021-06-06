@@ -29,14 +29,25 @@ export default class CaptivityPlaces extends Table {
     renderTable() {
         return this.props.data.map(place => 
             // data row
-            <tr key={place.zooId}>
+            <tr id={place.zooId} key={place.zooId}>
                 <td>{place.zooId}</td>
-                <td>{place.zooName}</td>
-                <td>{place.zooCity}</td>
-                <td>{place.zooState}</td>
-                <td>{place.zooCountry}</td>
-                <td>{place.zooCoordinates}</td>
-                <td><button onClick={this.onClickUpdate}>Save Changes</button>
+                <td contentEditable className="zooName">{place.zooName}</td>
+                <td contentEditable className="zooCity">{place.zooCity}</td>
+                <td contentEditable className="zooState">{place.zooState}</td>
+                <td contentEditable className="zooCountry">{place.zooCountry}</td>
+                <td contentEditable className="zooCoordinates">{place.zooCoordinates}</td>
+                <td><button onClick={() => {
+                    const row = document.getElementById(place.zooId);
+                    const object = {
+                        zooId: place.zooId,
+                        zooName: row.getElementsByClassName("zooName")[0].innerText || "",
+                        zooCity: row.getElementsByClassName("zooCity")[0].innerText || "",
+                        zooState: row.getElementsByClassName("zooState")[0].innerText || "",
+                        zooCountry: row.getElementsByClassName("zooCountry")[0].innerText || "",
+                        zooCoordinates: row.getElementsByClassName("zooCoordinates")[0].innerText || "",
+                    }    
+                    this.onClickUpdate("captivityPlaces", object)
+                }}>Save Changes</button>
                 <button onClick={() => this.onClickDelete('captivityPlaces', {data: {zooId: place.zooId}})}>Delete</button></td>
             </tr>
         );
