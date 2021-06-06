@@ -24,7 +24,7 @@ export default class App extends React.Component {
 
     this.state = {
       endangeredSpecies: [
-        {animalId: 1, scientificName: "Bubalus quarlesi", commonName: "mountain anoa", genus: "Bubalus", family: "Bovidae", kingdomOrder: "Artiodactyla", class: "Mammalia", phylum: "Chordata", cause: "hunting", photoUrl: "https://blog.nationalgeographic.org/wp-content/uploads/2018/02/Anoa-cropped-720x502.jpg", lastUpdate: "2021-04-26", captivityPlaceId: "NULL"},
+        {animalId: 1, scientificName: "Bubalus quarlesi", commonName: "mountain anoa", genus: "Bubalus", family: "Bovidae", kingdomOrder: "Artiodactyla", class: "Mammalia", phylum: "Chordata", cause: "hunting", photoUrl: "https://blog.nationalgeographic.org/wp-content/uploads/2018/02/Anoa-cropped-720x502.jpg", lastUpdate: "2021-04-26", captivityPlaceId: "NULL", zooName: "NULL"},
       ],
       nonprofits: [
         {nonprofitId: 1, nonprofitName: "Alianza Gato Andino", nonprofitWebsite: "https://gatoandino.org/en/home/"},

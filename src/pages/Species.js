@@ -35,6 +35,25 @@ export default class Species extends Table {
             <input type="submit" value="Add Row"/>
         </form>) 
     }
+
+    getCaptivityPlaceName(captivityPlaceId) {
+        const places = this.props.captivityPlaces;
+        const place = places.find((obj) => {
+            return obj.zooId === captivityPlaceId
+        });
+        if (place) {
+            return place.zooName;
+        } else {
+            return "NULL";
+        }
+    }
+
+    renderTableHeader() {
+        if (this.props.data && this.props.data.length) {
+            const header = ["animalId", "scientificName", "commonName", "genus", "family", "kingdomOrder", "class", "phylum", "cause", "photoUrl", "lastUpdate", "captivityPlaceId", "zooName", ""];
+            return <tr>{header.map((key, index) => <th key={index}>{key}</th>)}</tr>
+        } 
+    }
     
     renderTable() {
         return this.props.data.map(species => 
@@ -51,7 +70,8 @@ export default class Species extends Table {
                 <td contentEditable className="cause editCursor">{species.cause}</td>
                 <td contentEditable className="photoUrl editCursor">{species.photoUrl}</td>
                 <td>{species.lastUpdate}</td>
-                <td contentEditable className="captivityPlaceId editCursor">{species.captivityPlaceId}</td>
+                <td contentEditable className="captivityPlaceId editCursor">{species.captivityPlaceId || "NULL"}</td>
+                <td>{this.getCaptivityPlaceName(species.captivityPlaceId)}</td>
                 <td><button onClick={(e) => {
                     const row = document.getElementById(species.animalId);
                 
@@ -68,6 +88,9 @@ export default class Species extends Table {
                         photoUrl: row.getElementsByClassName("photoUrl")[0].innerText || "",
                         captivityPlaceId: row.getElementsByClassName("captivityPlaceId")[0].innerText || ""
                     };
+                    if (object.captivityPlaceId === "NULL") {
+                        object.captivityPlaceId = "";
+                    }
                     this.onClickUpdate("endangeredSpecies", object)}}
                     >Save Changes</button><button 
                 onClick={() => this.onClickDelete('endangeredSpecies', {data: {animalId: species.animalId}})}>Delete</button></td>
