@@ -73,6 +73,7 @@ export default class Table extends React.Component {
         <div className="nes-container with-title is-rounded">
             <p className="title">{this.props.title}</p>
             <p>{this.props.description}</p>
+            <p><strong>TO UPDATE: click the table cells directly, write your changes and then click SAVE CHANGES</strong></p>
         </div>
         {this.renderForm()}
         <label>Search</label>

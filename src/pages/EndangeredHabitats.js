@@ -40,6 +40,7 @@ export default class EndangeredHabitats extends Table {
         return this.props.data.map((dataPoint, index) => 
             // data row
             <tr key={index}>
+                <td>{dataPoint.endangeredHabitatId}</td>
                 <td>{dataPoint.animal}</td>
                 <td>{dataPoint.animalId}</td>
                 <td>{dataPoint.habitatId}</td>
